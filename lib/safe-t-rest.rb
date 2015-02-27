@@ -3,7 +3,7 @@ require 'rest-client'
 	
 
 class SafeTRest
-	attr_accessor(:extenstion_id, :method, :username, :password, :url, :role_id, :guid)
+	attr_accessor(:extenstion_id, :username, :password, :url, :role_id, :guid)
 
 	def getAppsProcessState
 		a = RestClient::Request.execute(

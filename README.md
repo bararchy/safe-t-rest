@@ -4,16 +4,16 @@ A ruby gem for Safe-T Box Rest integration
 Basic usage:
 ================
 
+* Require the gem
 ```ruby
 require 'safe-t-rest'
 ```
 
-Do a getAppsProcessState call:
-
-```ruby
 * Initialize a new instance
+```ruby
 client = SafeTRest.new
 ```
+
 * Configure the client
 ```ruby
 client.url = 'https://Safe-T_Box_Site.com/ui_api/login.aspx'

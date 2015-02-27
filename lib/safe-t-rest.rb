@@ -22,7 +22,7 @@ class SafeTRest
    			:url => @url,
    			:headers => {
    			:servletRequestID => 'MethodRequest',
-   			:BusinessLogic => "{Username:'#{@username}', Passowrd:'#{@password}', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}', false]}"
+   			:BusinessLogic => "{Username:'#{@username}', Passowrd:'#{@password}', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}']}"
    			}
 		)
 	end

@@ -1,5 +1,5 @@
 require 'rest-client'
-
+require 'base64'
 	
 
 class SafeTRest
@@ -25,5 +25,17 @@ class SafeTRest
    			:BusinessLogic => "{Username:'#{@username}', Passowrd:'#{@password}', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}']}"
    			}
 		)
+	end
+
+	def iVerifyUserAccount
+		a = RestClient::Request.execute(
+   			:method => :post,
+   			:url => @url,
+   			:headers => {
+   			:servletRequestID => 'MethodRequest',
+   			:BusinessLogic => "{Username:'#{@username}', Passowrd:'#{@password}', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iVerifyUserAccount: ['#{@username}', '#{@password}', true]}"
+   			}
+		).split(':')
+		return [a[0], Base64.decode64(a[1])].join(':')
 	end
 end

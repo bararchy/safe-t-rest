@@ -4,6 +4,11 @@ A ruby gem for Safe-T Box Rest integration
 Basic usage:
 ================
 
+* Install the gem
+```
+gem install safe-t-rest
+```
+
 * Require the gem
 ```ruby
 require 'safe-t-rest'

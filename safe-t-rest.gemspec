@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
     '*.gemspec'
   ]
 
-  s.add_dependency 'rest-client', '~> 1.7.3'
+  s.add_dependency 'rest-client', '~> 1.7', '>= 1.7.3'
 end

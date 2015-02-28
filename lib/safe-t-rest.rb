@@ -11,7 +11,7 @@ class SafeTRest
    			:url => @url,
    			:headers => {
    			:servletRequestID => 'MethodRequest',
-   			:BusinessLogic => "{Username:'#{@username}', Passowrd:'#{@password}', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetAppsProcessState: ['#{@guid}', false]}"
+   			:BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetAppsProcessState: ['#{@guid}', false]}"
    			}
 		)
 	end
@@ -22,7 +22,7 @@ class SafeTRest
    			:url => @url,
    			:headers => {
    			:servletRequestID => 'MethodRequest',
-   			:BusinessLogic => "{Username:'#{@username}', Passowrd:'#{@password}', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}']}"
+   			:BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}']}"
    			}
 		)
 	end
@@ -33,9 +33,23 @@ class SafeTRest
    			:url => @url,
    			:headers => {
    			:servletRequestID => 'MethodRequest',
-   			:BusinessLogic => "{Username:'#{@username}', Passowrd:'#{@password}', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iVerifyUserAccount: ['#{@username}', '#{@password}', true]}"
+   			:BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iVerifyUserAccount: ['#{@username}', '#{@password}', true]}"
    			}
 		).split(':')
 		return [a[0], Base64.decode64(a[1])].join(':')
 	end
+
+   def iGetHistory(days)
+      a = RestClient::Request.execute(
+            :method => :post,
+            :url => @url,
+            :headers => {
+            :servletRequestID => 'MethodRequest',
+            :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iGetHistory: ['#{@username}', '#{@password}', #{days}]}"
+            }
+      )
+   end
+
+
+
 end

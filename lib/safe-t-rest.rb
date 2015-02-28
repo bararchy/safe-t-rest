@@ -61,13 +61,13 @@ class SafeTRest
       )
    end
 
-   def getFolderListXML
+   def iGetFolderList
       a = RestClient::Request.execute(
             :method => :post,
             :url => @url,
             :headers => {
             :servletRequestID => 'MethodRequest',
-            :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', getFolderListXML: ['#{@username}', '#{@password}', 'true', 'false', '0/000', '417']}"
+            :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iGetFolderList: ['#{@username}', '#{@password}', #{true}, #{false}, '0/000', 417]}"
             }
       )
    end

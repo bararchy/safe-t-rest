@@ -50,6 +50,27 @@ class SafeTRest
       )
    end
 
+   def iUserAccountAddressList
+      a = RestClient::Request.execute(
+            :method => :post,
+            :url => @url,
+            :headers => {
+            :servletRequestID => 'MethodRequest',
+            :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iUserAccountAddressList: ['#{@username}', '#{@password}']}"
+            }
+      )
+   end
+
+   def getFolderListXML
+      a = RestClient::Request.execute(
+            :method => :post,
+            :url => @url,
+            :headers => {
+            :servletRequestID => 'MethodRequest',
+            :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', getFolderListXML: ['#{@username}', '#{@password}', 'true', 'false', '0/000', '417']}"
+            }
+      )
+   end
 
 
 end

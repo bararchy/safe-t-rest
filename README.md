@@ -71,7 +71,7 @@ args = {
 client.iFileUpload(args)
 ```
 
-# File Download
+* File Download
 ```ruby
 args = {
 	:file_name => 'file.txt', # The name of the file to download

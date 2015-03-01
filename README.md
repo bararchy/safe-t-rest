@@ -1,5 +1,5 @@
 # safe-t-rest
-A ruby gem for Safe-T Box Rest integration
+A ruby gem for Safe-T Box REST API
 
 Basic usage:
 ================
@@ -58,4 +58,15 @@ args = {
 
 client.iSafeShareFile(args)
 ```
-If the request is accepted at the server you will get back 'OK' as response.
+
+* File Upload
+```ruby
+args = {
+	:file_base64 => 'V29ya2luZyA6KQo=', # the file as a base64 string Base64.encode64(File.read(file))
+	:file_name => 'file.txt', # the name of the file
+	:folder_path => '', # empty means root folder
+	:root_folder_id => 417 # My Storage ID
+}
+
+client.iFileUpload(args)
+```

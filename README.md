@@ -83,3 +83,8 @@ file = client.iFileDownload(args) # Get back the file as a base64 string
 file = Base64.decode64(file) # decode the string
 File.write('file.txt', file) # write decoded file
 ```
+
+# RubyDoc
+http://www.rubydoc.info/github/bararchy/safe-t-rest/SafeTRest
+
+* Added example client under /bin

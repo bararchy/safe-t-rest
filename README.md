@@ -32,6 +32,7 @@ client.guid = 'my_packge_GUID.123123'
 * Send requests
 ```ruby
 puts client.getAppsProcessState
+
 puts client.getPackageFileList
 ```
 
@@ -57,3 +58,4 @@ args = {
 
 client.iSafeShareFile(args)
 ```
+If the request is accepted at the server you will get back 'OK' as response.

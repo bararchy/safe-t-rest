@@ -34,3 +34,26 @@ client.guid = 'my_packge_GUID.123123'
 puts client.getAppsProcessState
 puts client.getPackageFileList
 ```
+
+* Safe Share
+```ruby
+args = {
+	:files => 'file.txt', # name of file to share
+	:recipients => 'alexander.dan@safe-t.com', # Email address of the one you want to share with
+	:sender_name => 'Bar Hofesh', 
+	:sender_address => 'bar.hofesh@safe-t.com',
+	:subject => 'Testing Ruby API', # Email Subject
+	:message => 'This is a Test message, just checking the Ruby API using REST', # Email body message
+	:message_encryption_level => '0', # 0 = high, 1 = normal, 2 = low
+	:delivery_method => '0',
+	:mobile_recipient => '',
+	:return_receipt => true, # get back a notification when the file was downloaded
+	:safe_reply => true, # send an safe reply invitation
+	:max_downloads => '3', # maximum number of allowed downloads
+	:package_expiry => '1440', # in minutes
+	:folder_path => '', # empty means root folder
+	:root_folder_id => '417' # My Storage ID
+}
+
+client.iSafeShareFile(args)
+```

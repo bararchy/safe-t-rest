@@ -69,5 +69,16 @@ class SafeTRest
       )
    end
 
+   def iSafeShareFile(args)
+      RestClient::Request.execute(
+         :method => :post,
+         :url => @url,
+         :headers => {
+         :servletRequestID => 'MethodRequest',
+         :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iSafeShareFile: ['#{@username}', '#{@password}', '#{args[:files]}', '#{args[:recipients]}', '#{args[:sender_name]}', '#{args[:sender_address]}', '#{args[:subject]}', '#{args[:message]}', #{args[:message_encryption_level]}, #{args[:delivery_method]}, '#{args[:mobile_recipient]}', #{args[:return_receipt]}, #{args[:safe_reply]}, #{args[:max_downloads]}, #{args[:package_expiry]}, '#{args[:folder_path]}', #{args[:root_folder_id]}]}"
+         }
+      )
+   end
+
 
 end

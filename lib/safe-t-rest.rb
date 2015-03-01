@@ -91,4 +91,15 @@ class SafeTRest
       )
    end
 
+   def iFileDownload(args)
+      RestClient::Request.execute(
+         :method => :post,
+         :url => @url,
+         :headers => {
+            :servletRequestID => 'MethodRequest',
+            :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iFileDownload: ['#{@username}', '#{@password}', '#{args[:file_name]}', '#{args[:folder_path]}', #{args[:root_folder_id]}]}"
+         }
+      )
+   end
+
 end

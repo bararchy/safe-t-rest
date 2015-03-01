@@ -70,3 +70,16 @@ args = {
 
 client.iFileUpload(args)
 ```
+
+# File Download
+```ruby
+args = {
+	:file_name => 'file.txt', # The name of the file to download
+	:folder_path => '', # The path of the file
+	:root_folder_id => 417 # My Storage ID
+}
+
+file = client.iFileDownload(args) # Get back the file as a base64 string
+file = Base64.decode64(file) # decode the string
+File.write('file.txt', file) # write decoded file
+```

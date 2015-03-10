@@ -6,71 +6,69 @@ require 'nokogiri'
 require 'base64'
 require 'colorize'
 
-
 class ApiBin
-	
-	def self.main_loop
-	
-		puts "Safe-T API -- Using 'safe-t-rest' GEM".blue
-		client = SafeTRest.new
-		puts "Please enter servers url: ".bold
-		client.url = gets.chomp
-		puts "Please enter username: ".bold
-		client.username = gets.chomp
-		puts "Please enter password: ".bold
-		client.password = gets.chomp
-		puts "Please enter Role ID: ".bold
-		client.role_id = gets.chomp
-		puts "Please enter Extenstion ID: ".bold
-		client.extenstion_id = gets.chomp
+  
+  def self.main_loop
+  
+    puts "Safe-T API -- Using 'safe-t-rest' GEM".blue
+    client = SafeTRest.new
+    puts "Please enter servers url: ".bold
+    client.url = gets.chomp
+    puts "Please enter username: ".bold
+    client.username = gets.chomp
+    puts "Please enter password: ".bold
+    client.password = gets.chomp
+    puts "Please enter Role ID: ".bold
+    client.role_id = gets.chomp
+    puts "Please enter Extenstion ID: ".bold
+    client.extenstion_id = gets.chomp
+    puts "Configuration Loaded".green
+    
+    loop do
 
-		puts "Configuration Loaded".green
-		loop do 
-			
-			puts '1. List Files'.bold
-			puts '2. Upload Files'.bold
-			puts '3. Download Files'.bold
+      puts '1. List Files'.bold
+      puts '2. Upload Files'.bold
+      puts '3. Download Files'.bold
+      answer = gets.chomp
 
-			answer = gets.chomp
-			case answer
-			when '1'
-				puts "Please enter the path on the server to list (empty for root folder): "
-				path = gets.chomp
-				puts Nokogiri::XML(client.iGetFolderList(path))
-			when '2'
-				puts "Please enter the path to the file you want to upload: "
-				file = gets.chomp
-				filename = File.basename(file)
-				filepath = file.split('/')[-1]
-				upload_string = Base64.encode64(File.read(file))
-				args = {
-    				:file_base64 => upload_string, # the file as a base64 string Base64.encode64(File.read(file))
-    				:file_name => filename, # the name of the file
-    				:folder_path => '', # empty means root folder
-    				:root_folder_id => 417 # My Storage ID
-				}
-				answer = client.iFileUpload(args)
-				if answer == 'OK'
-					puts "File Uploaded".green
-				else
-					puts "Error Uploading File: #{answer}".red
-				end
-			when '3'
-				puts "Please enter the name of the file you want to download: "
-				filename = gets.chomp
-				puts "Please enter the path to the directory the file is in (empty for root directory): "
-				server_path = gets.chomp
-				puts "Please enter the path to save it to (example: /tmp): "
-				path = gets.chomp
-				args = {
-    				:file_name => filename, # The name of the file to download
-    				:folder_path => server_path, # The path of the file
-    				:root_folder_id => 417 # My Storage ID
-				}
-				download_string = Base64.decode64(client.iFileDownload(args))
-				File.write("#{path}/#{filename}", download_string)
-			end
-		end
-	end
+      case answer
+      when '1'
+        puts "Please enter the path on the server to list (empty for root folder): "
+        path = gets.chomp
+        puts Nokogiri::XML(client.iGetFolderList(path))
+      when '2'
+        puts "Please enter the path to the file you want to upload: "
+        file = gets.chomp
+        filename = File.basename(file)
+        upload_string = Base64.encode64(File.read(file))
+        args = {
+          file_base64: upload_string, # the file as a base64 string Base64.encode64(File.read(file))
+          file_name: filename, # the name of the file
+          folder_path: '', # empty means root folder
+          root_folder_id: 417 # My Storage ID
+        }
+        answer = client.iFileUpload(args)
+        if answer == 'OK'
+          puts "File Uploaded".green
+        else
+          puts "Error Uploading File: #{answer}".red
+        end
+      when '3'
+        puts "Please enter the name of the file you want to download: "
+        filename = gets.chomp
+        puts "Please enter the path to the directory the file is in (empty for root directory): "
+        server_path = gets.chomp
+        puts "Please enter the path to save it to (example: /tmp): "
+        path = gets.chomp
+        args = {
+          file_name: filename, # The name of the file to download
+          folder_path: server_path, # The path of the file
+          root_folder_id: 417 # My Storage ID
+        }
+        download_string = Base64.decode64(client.iFileDownload(args))
+        File.write("#{path}/#{filename}", download_string)
+      end
+    end
+  end
 end
 ApiBin.main_loop

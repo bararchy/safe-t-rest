@@ -1,7 +1,7 @@
 require 'rest-client'
 
 class SafeTRest
-  attr_accessor(:extenstion_id, :user_name, :password, :url, :role_id, :guid)
+  attr_accessor :extenstion_id, :user_name, :password, :url, :role_id, :guid
 
   def get_apps_process_state
     send_request("{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetAppsProcessState: ['#{@guid}', false]}")

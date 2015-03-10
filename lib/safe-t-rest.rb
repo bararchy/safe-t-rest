@@ -24,7 +24,7 @@ class SafeTRest
   end
 
   def get_folder_list(path)
-    send_request("{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iGetFolderList: ['#{@user_name}', '#{@password}', #{false}, #{true}, '#{path}', 417]}")
+    send_request("{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iGetFolderList: ['#{@user_name}', '#{@password}', false, true, '#{path}', 417]}")
   end
 
   def safe_share_file(args)

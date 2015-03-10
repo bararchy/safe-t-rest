@@ -1,46 +1,46 @@
 require 'rest-client'
-	
+  
 class SafeTRest
-	attr_accessor(:extenstion_id, :username, :password, :url, :role_id, :guid)
+  attr_accessor(:extenstion_id, :username, :password, :url, :role_id, :guid)
 
-	def get_apps_process_state
-		RestClient::Request.execute(
-			:method => :post,
-			:url => @url,
-			:headers => {
-			   :servletRequestID => 'MethodRequest',
-			   :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetAppsProcessState: ['#{@guid}', false]}"
-			}
-		)
-	end
+  def get_apps_process_state
+    RestClient::Request.execute(
+      :method => :post,
+      :url => @url,
+      :headers => {
+        :servletRequestID => 'MethodRequest',
+        :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetAppsProcessState: ['#{@guid}', false]}"
+      }
+    )
+  end
 
-	def get_package_file_list
-		RestClient::Request.execute(
-			:method => :post,
-			:url => @url,
-			:headers => {
-			   :servletRequestID => 'MethodRequest',
-			   :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}']}"
-			}
-		)
-	end
+  def get_package_file_list
+    RestClient::Request.execute(
+      :method => :post,
+      :url => @url,
+      :headers => {
+         :servletRequestID => 'MethodRequest',
+         :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}']}"
+      }
+    )
+  end
 
-	def verify_user_account
-		RestClient::Request.execute(
-			:method => :post,
-			:url => @url,
-			:headers => {
-			   :servletRequestID => 'MethodRequest',
-			   :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iVerifyUserAccount: ['#{@username}', '#{@password}', true]}"
-			}
-		)
-	end
+  def verify_user_account
+    RestClient::Request.execute(
+      :method => :post,
+      :url => @url,
+      :headers => {
+         :servletRequestID => 'MethodRequest',
+         :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iVerifyUserAccount: ['#{@username}', '#{@password}', true]}"
+      }
+    )
+  end
 
    def get_user_history(days)
       RestClient::Request.execute(
-         :method => :post,
-         :url => @url,
-         :headers => {
+        :method => :post,
+        :url => @url,
+        :headers => {
             :servletRequestID => 'MethodRequest',
             :BusinessLogic => "{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', iGetHistory: ['#{@username}', '#{@password}', #{days}]}"
          }

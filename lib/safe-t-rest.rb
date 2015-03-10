@@ -3,7 +3,7 @@ require 'rest-client'
 class SafeTRest
 	attr_accessor(:extenstion_id, :username, :password, :url, :role_id, :guid)
 
-	def getAppsProcessState
+	def get_apps_process_state
 		RestClient::Request.execute(
 			:method => :post,
 			:url => @url,
@@ -14,7 +14,7 @@ class SafeTRest
 		)
 	end
 
-	def getPackageFileList
+	def get_package_file_list
 		RestClient::Request.execute(
 			:method => :post,
 			:url => @url,
@@ -25,7 +25,7 @@ class SafeTRest
 		)
 	end
 
-	def iVerifyUserAccount
+	def verify_user_account
 		RestClient::Request.execute(
 			:method => :post,
 			:url => @url,
@@ -36,7 +36,7 @@ class SafeTRest
 		)
 	end
 
-   def iGetHistory(days)
+   def get_user_history(days)
       RestClient::Request.execute(
          :method => :post,
          :url => @url,
@@ -47,7 +47,7 @@ class SafeTRest
       )
    end
 
-   def iUserAccountAddressList
+   def user_account_address_list
       RestClient::Request.execute(
          :method => :post,
          :url => @url,
@@ -58,7 +58,7 @@ class SafeTRest
       )
    end
 
-   def iGetFolderList(path)
+   def get_folder_list(path)
       RestClient::Request.execute(
          :method => :post,
          :url => @url,
@@ -69,7 +69,7 @@ class SafeTRest
       )
    end
 
-   def iSafeShareFile(args)
+   def safe_share_file(args)
       RestClient::Request.execute(
          :method => :post,
          :url => @url,
@@ -80,7 +80,7 @@ class SafeTRest
       )
    end
 
-   def iFileUpload(args)
+   def file_upload(args)
       RestClient::Request.execute(
          :method => :post,
          :url => @url,
@@ -91,7 +91,7 @@ class SafeTRest
       )
    end
 
-   def iFileDownload(args)
+   def file_download(args)
       RestClient::Request.execute(
          :method => :post,
          :url => @url,

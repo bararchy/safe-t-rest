@@ -35,7 +35,7 @@ class ApiBin
       when '1'
         puts "Please enter the path on the server to list (empty for root folder): "
         path = gets.chomp
-        puts Nokogiri::XML(client.iGetFolderList(path))
+        puts Nokogiri::XML(client.get_folder_list(path))
       when '2'
         puts "Please enter the path to the file you want to upload: "
         file = gets.chomp
@@ -47,7 +47,7 @@ class ApiBin
           folder_path: '', # empty means root folder
           root_folder_id: 417 # My Storage ID
         }
-        answer = client.iFileUpload(args)
+        answer = client.file_upload(args)
         if answer == 'OK'
           puts "File Uploaded".green
         else
@@ -65,7 +65,7 @@ class ApiBin
           folder_path: server_path, # The path of the file
           root_folder_id: 417 # My Storage ID
         }
-        download_string = Base64.decode64(client.iFileDownload(args))
+        download_string = Base64.decode64(client.file_download(args))
         File.write("#{path}/#{filename}", download_string)
       end
     end

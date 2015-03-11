@@ -14,26 +14,30 @@ gem install safe-t-rest
 require 'safe-t-rest'
 ```
 
-* Initialize a new instance
+* Initialize a new instance (can be empty or set via parameters)
+empty:
 ```ruby
 client = SafeTRest.new
 ```
+set using hash:
+```ruby
+client = SafeTRest.new(url: 'https://Safe-T/ui_api/login.aspx', user_name: 'test', password: '123', extenstion_id: '1', role_id: '0')
+```
 
-* Configure the client
+* Configure the client (if you initialized empty)
 ```ruby
 client.url = 'https://Safe-T_Box_Site.com/ui_api/login.aspx'
 client.username = 'test'
 client.password = '12345'
 client.extenstion_id = '435-34534-24-234-6'
 client.role_id = '00006'
-client.guid = 'my_packge_GUID.123123'
 ```
 
 * Send requests
 ```ruby
-puts client.getAppsProcessState
+puts client.get_apps_process_state('my_packge_GUID.123123')
 
-puts client.getPackageFileList
+puts client.get_package_file_list('my_packge_GUID.123123')
 ```
 
 * Safe Share
@@ -56,7 +60,7 @@ args = {
 	:root_folder_id => '417' # My Storage ID
 }
 
-client.iSafeShareFile(args)
+client.safe_share_file(args)
 ```
 
 * File Upload
@@ -68,7 +72,7 @@ args = {
 	:root_folder_id => 417 # My Storage ID
 }
 
-client.iFileUpload(args)
+client.file_upload(args)
 ```
 
 * File Download
@@ -79,7 +83,7 @@ args = {
 	:root_folder_id => 417 # My Storage ID
 }
 
-file = client.iFileDownload(args) # Get back the file as a base64 string
+file = client.file_download(args) # Get back the file as a base64 string
 file = Base64.decode64(file) # decode the string
 File.write('file.txt', file) # write decoded file
 ```

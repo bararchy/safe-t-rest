@@ -21,7 +21,7 @@ client = SafeTRest.new
 ```
 set using hash:
 ```ruby
-client = SafeTRest.new(url: 'https://Safe-T/ui_api/login.aspx', user_name: 'test', password: '123', extenstion_id: '1', role_id: '0')
+client = SafeTRest.new(url: 'https://Safe-T/ui_api/login.aspx', user_name: 'test', password: '123', extension_id: '1', role_id: '0')
 ```
 
 * Configure the client (if you initialized empty)
@@ -29,7 +29,7 @@ client = SafeTRest.new(url: 'https://Safe-T/ui_api/login.aspx', user_name: 'test
 client.url = 'https://Safe-T_Box_Site.com/ui_api/login.aspx'
 client.username = 'test'
 client.password = '12345'
-client.extenstion_id = '435-34534-24-234-6'
+client.extension_id = '435-34534-24-234-6'
 client.role_id = '00006'
 ```
 

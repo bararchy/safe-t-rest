@@ -21,7 +21,7 @@ class ApiBin
     puts "Please enter Role ID: ".bold
     client.role_id = gets.chomp
     puts "Please enter Extenstion ID: ".bold
-    client.extenstion_id = gets.chomp
+    client.extension_id = gets.chomp
     puts "Configuration Loaded".green
     
     loop do

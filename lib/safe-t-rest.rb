@@ -1,14 +1,22 @@
 require 'rest-client'
 
 class SafeTRest
-  attr_accessor :extenstion_id, :user_name, :password, :url, :role_id, :guid
+  attr_accessor :extenstion_id, :user_name, :password, :url, :role_id
 
-  def get_apps_process_state
-    send_request("{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetAppsProcessState: ['#{@guid}', false]}")
+  def initialize(config_hash={})
+    @extenstion_id = config_hash[:extenstion_id]
+    @user_name = config_hash[:user_name]
+    @password = config_hash[:password]
+    @url = config_hash[:url]
+    @role_id = config_hash[:role_id]
   end
 
-  def get_package_file_list
-    send_request("{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{@guid}']}")
+  def get_apps_process_state(guid)
+    send_request("{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetAppsProcessState: ['#{guid}', false]}")
+  end
+
+  def get_package_file_list(guid)
+    send_request("{Username:'', Password:'', RoleID: '#{@role_id}', ExtensionID: '#{@extenstion_id}', GetPackageFileList: ['#{guid}']}")
   end
 
   def verify_user_account

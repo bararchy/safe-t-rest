@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'safe-t-rest'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.date        = Time.now.strftime('%Y-%m-%d')
   s.summary     = 'A ruby gem to interact with Safe-T Box.'
   s.description = 'Ruby gem to interact with Safe-T Box rest API. '

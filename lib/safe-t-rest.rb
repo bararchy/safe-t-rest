@@ -59,6 +59,7 @@ class SafeTRest
 
   def send_request(request_string)
     RestClient::Request.execute(
+      :verify_ssl => false,
       method: :post,
       url: @url,
       headers: {
